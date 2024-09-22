@@ -16,7 +16,7 @@ const App = () => {
   const handleSubmit = async () => {
     try {
       const parsedData = JSON.parse(jsonData);
-      const res = await axios.post('http://localhost:8080/bfhl', {
+      const res = await axios.post('https://bajajarsalan.onrender.com/bfhl', {
         data: parsedData.data,
         file_b64: parsedData.file_b64 || null,
       });
