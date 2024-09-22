@@ -22,7 +22,7 @@ const App = () => {
       });
       setResponse(res.data);
     } catch (error) {
-      alert('Invalid JSON4!');
+      alert('Invalid JSON!');
       console.error(error);
     }
   };
@@ -42,19 +42,34 @@ const App = () => {
     });
 
     return (
-      <div style={{ marginTop: '20px', backgroundColor: '#f9f9f9', padding: '20px', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
+      <div style={{ marginTop: '20px', backgroundColor: '#f5f7fa', padding: '20px', borderRadius: '10px', boxShadow: '0 6px 12px rgba(0, 0, 0, 0.1)' }}>
         {filteredResponse}
       </div>
     );
   };
 
   return (
-    <div style={{ fontFamily: 'Roboto, sans-serif', padding: '40px', maxWidth: '700px', margin: 'auto' }}>
-      <label style={{ fontWeight: 'bold', marginBottom: '10px', display: 'block', fontSize: '18px', color: '#333' }}>Enter JSON Data:</label>
+    <div style={{
+      fontFamily: 'Roboto, sans-serif',
+      padding: '40px',
+      maxWidth: '700px',
+      margin: 'auto',
+      backgroundColor: '#ffffff',
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+      borderRadius: '10px',
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    }}>
+      <label style={{ fontWeight: 'bold', marginBottom: '10px', display: 'block', fontSize: '20px', color: '#333', textAlign: 'center' }}>Enter JSON Data:</label>
       <textarea
         value={jsonData}
         onChange={(e) => setJsonData(e.target.value)}
-        placeholder='Paste your JSON data here...'
+        placeholder='Paste JSON data here...'
         rows='5'
         cols='50'
         style={{
@@ -62,35 +77,44 @@ const App = () => {
           padding: '15px',
           fontSize: '16px',
           marginBottom: '20px',
-          borderRadius: '8px',
-          border: '1px solid #ccc',
-          backgroundColor: '#f7f7f7',
+          borderRadius: '10px',
+          border: '1px solid #ddd',
+          backgroundColor: '#f9fafc',
           outline: 'none',
-          resize: 'none'
+          resize: 'none',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.05)',
         }}
       />
 
-      <button
-        onClick={handleSubmit}
-        style={{
-          backgroundColor: '#4CAF50',
-          color: '#fff',
-          border: 'none',
-          padding: '12px 30px',
-          cursor: 'pointer',
-          borderRadius: '8px',
-          fontSize: '16px',
-          marginBottom: '20px',
-          width: '100%',
-          transition: 'background-color 0.3s ease',
-        }}
-        onMouseOver={(e) => e.target.style.backgroundColor = '#45a049'}
-        onMouseOut={(e) => e.target.style.backgroundColor = '#4CAF50'}
-      >
-        Process Data
-      </button>
+      <div style={{ textAlign: 'right', marginBottom: '20px', width: '100%' }}>
+        <button
+          onClick={handleSubmit}
+          style={{
+            backgroundColor: '#0056b3',
+            color: '#fff',
+            border: 'none',
+            padding: '12px 30px',
+            cursor: 'pointer',
+            borderRadius: '8px',
+            fontSize: '16px',
+            transition: 'background-color 0.3s ease, transform 0.2s ease',
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+            marginRight: '0',
+          }}
+          onMouseOver={(e) => {
+            e.target.style.backgroundColor = '#007bff';
+            e.target.style.transform = 'scale(1.05)';
+          }}
+          onMouseOut={(e) => {
+            e.target.style.backgroundColor = '#0056b3';
+            e.target.style.transform = 'scale(1)';
+          }}
+        >
+          Process Data
+        </button>
+      </div>
 
-      <label style={{ fontWeight: 'bold', marginBottom: '10px', display: 'block', fontSize: '18px', color: '#333' }}>Filter Response:</label>
+      <label style={{ fontWeight: 'bold', marginBottom: '10px', display: 'block', fontSize: '20px', color: '#333', textAlign: 'center' }}>Filter Response:</label>
       <Select
         isMulti
         options={options}
@@ -100,17 +124,19 @@ const App = () => {
         styles={{
           control: (base) => ({
             ...base,
-            borderRadius: '8px',
+            borderRadius: '10px',
             padding: '5px',
             fontSize: '16px',
-            borderColor: '#ccc',
-            boxShadow: 'none',
+            borderColor: '#ddd',
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.05)',
             '&:hover': { borderColor: '#999' },
           }),
           multiValue: (styles) => ({
             ...styles,
-            backgroundColor: '#4CAF50',
+            backgroundColor: '#0056b3',
             color: '#fff',
+            borderRadius: '5px',
+            padding: '3px 6px',
           }),
           multiValueLabel: (styles) => ({
             ...styles,
@@ -119,7 +145,7 @@ const App = () => {
           multiValueRemove: (styles) => ({
             ...styles,
             color: '#fff',
-            ':hover': { backgroundColor: '#388e3c', color: '#fff' },
+            ':hover': { backgroundColor: '#004085', color: '#fff' },
           }),
         }}
       />
